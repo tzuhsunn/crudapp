@@ -4,7 +4,8 @@
   "description": "SOMETHING",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "dev": "nodemon --ignore 'db.json' index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,12 @@
   },
   "homepage": "https://github.com/tzuhsunn/crudapp#readme",
   "dependencies": {
-    "express": "^5.1.0"
-  }
+    "express": "^5.1.0",
+    "lowdb": "^7.0.1",
+    "nanoid": "^5.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "type": "module"
 }
