@@ -20,19 +20,19 @@ function renderPosts(posts) {
 
     const titleInput = document.createElement('input')
     titleInput.value = post.title
-    titleInput.id = `title-${post.id}`
+    titleInput.id = `title-${post._id}`
 
     const textArea = document.createElement('textarea')
     textArea.value = post.text
-    textArea.id = `text-${post.id}`
+    textArea.id = `text-${post._id}`
 
     const updateBtn = document.createElement('button')
     updateBtn.textContent = 'Update'
-    updateBtn.onclick = () => updatePost(post.id)
+    updateBtn.onclick = () => updatePost(post._id)
 
     const deleteBtn = document.createElement('button')
     deleteBtn.textContent = 'Delete'
-    deleteBtn.onclick = () => deletePost(post.id)
+    deleteBtn.onclick = () => deletePost(post._id)
 
     li.appendChild(titleInput)
     li.appendChild(document.createElement('br'))

@@ -1,23 +1,16 @@
 // db.js
-import { Low } from 'lowdb'
-import { JSONFile } from 'lowdb/node'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { MongoClient } from 'mongodb'
 
-// __dirname for ESM
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const uri = 'mongodb://mongo:27017'  // mongodb servive name in docker-compose.yml
+const client = new MongoClient(uri)
 
-// DB setup
-const file = join(__dirname, 'db.json')
-const adapter = new JSONFile(file)
-const db = new Low(adapter, { posts: [] })
+let db
 
-// initialize the database
 export async function initDB() {
-  await db.read()
-  db.data ||= { posts: [] }
-  await db.write()
+  await client.connect()
+  db = client.db('blogdb')
 }
 
-export { db }
+export function getPostsCollection() {
+  return db.collection('posts')
+}
